@@ -59,6 +59,20 @@ class Ctrl_Student
 
         // Xóa sinh viên
 
+        else if(isset($_GET['mod3']))
+        {
+            $modelStudent = new Model_Student();
+            $studentList = $modelStudent->getAllStudent();
+            include_once("../View/DeleteStudentList.php");
+        }  
+        else if(isset($_GET['stid_del']))
+        {
+            $id = $_GET['stid_del'];
+            $student = new Model_Student();
+            $student->deleteStudent($id);
+            header("Location: C_Student.php?mod3='1'");
+        }
+
 
 
 
