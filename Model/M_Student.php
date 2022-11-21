@@ -9,7 +9,7 @@ class Model_Student
         $link = mysqli_connect('localhost','root','') or die('Could not connect:' .mysqli_error());
         mysqli_select_db($link,'DULIEU');
         $rs = mysqli_query($link,"SELECT * FROM SINHVIEN");
-        $i = 0;
+        $i = 1;
         while($row = mysqli_fetch_array($rs))
         {
             $id = $row['id'];

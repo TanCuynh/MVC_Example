@@ -36,7 +36,7 @@ class Ctrl_Student
         {
             $modelStudent = new Model_Student();
             $studentList = $modelStudent->getAllStudent();
-            include_once("../View/UpdateStudentList.php");
+            include_once("../View/PickStudentToUpdate.php");
         }  
         else if(isset($_POST['updatee']))
         {
@@ -46,12 +46,14 @@ class Ctrl_Student
             $university = $_REQUEST['universityy'];
             $student = new Model_Student();
             $student->updateStudent($id, $name, $age, $university);
-            header("Location: C_Student.php?mod2='1'");
+            $studentList = $student->getAllStudent();
+            include_once("../View/StudentList.php");
         }
-        else if(isset($_GET['stid_fix']))
+        else if(isset($_POST['chooseToUpdatee']))
         {
+            $id = $_REQUEST['idd'];
             $modelStudent = new Model_Student();
-            $student = $modelStudent->getStudentDetail($_GET['stid_fix']);
+            $student = $modelStudent->getStudentDetail($id);
             include_once("../View/StudentUpdate.php");
         }
 
@@ -63,14 +65,15 @@ class Ctrl_Student
         {
             $modelStudent = new Model_Student();
             $studentList = $modelStudent->getAllStudent();
-            include_once("../View/DeleteStudentList.php");
+            include_once("../View/PickStudentToDelete.php");
         }  
-        else if(isset($_GET['stid_del']))
+        else if(isset($_POST['chooseToDeletee']))
         {
-            $id = $_GET['stid_del'];
+            $id = $_REQUEST['idd'];
             $student = new Model_Student();
             $student->deleteStudent($id);
-            header("Location: C_Student.php?mod3='1'");
+            $studentList = $student->getAllStudent();
+            include_once("../View/StudentList.php");
         }
 
 
