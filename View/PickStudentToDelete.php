@@ -13,26 +13,26 @@
             <tr>
                 <td>Chọn ID sinh viên cần xóa: </td>
                 <td>
-                <?php
-                    $link = mysqli_connect('localhost','root','') or die('Could not connect:' .mysql_error());
-                    $db_selected = mysqli_select_db($link,'DULIEU');
-                ?>
-                <select name="idd">
-                <option value="" hidden>Chọn ID sinh viên</option>
-                <?php
-                    $query = "SELECT ID FROM SINHVIEN";
-                    $result = $link->query($query);
-                    if ($result->num_rows > 0) {
-                        while ($optionData = $result->fetch_assoc())
-                        {
-                            $option = $optionData['ID'];
-                ?>
-                            <option ><?php echo $option;?> </option>
-                <?php
+                    <?php
+                        $link = mysqli_connect('localhost','root','') or die('Could not connect:' .mysql_error());
+                        $db_selected = mysqli_select_db($link,'DULIEU');
+                    ?>
+                    <select name="idd">
+                    <option value="" hidden>Chọn ID sinh viên</option>
+                    <?php
+                        $query = "SELECT ID FROM SINHVIEN";
+                        $result = $link->query($query);
+                        if ($result->num_rows > 0) {
+                            while ($optionData = $result->fetch_assoc())
+                            {
+                                $option = $optionData['ID'];
+                    ?>
+                                <option><?php echo $option;?> </option>
+                    <?php
+                        }
                     }
-                }
-                ?>
-            </select>
+                    ?>
+                    </select>
                 </td>
             </tr>
             <tr>

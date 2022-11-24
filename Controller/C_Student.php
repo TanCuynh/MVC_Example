@@ -81,6 +81,20 @@ class Ctrl_Student
 
         //Tìm kiếm sinh viên
 
+        else if(isset($_GET['mod4']))
+        {
+            $modelStudent = new Model_Student();
+            $studentList = $modelStudent->getAllStudent();
+            include_once("../View/SearchStudent.php");
+        }  
+        else if(isset($_POST['searchh']))
+        {
+            $option = $_REQUEST['optionSearch'];
+            $value = $_REQUEST['valuee'];
+            $student = new Model_Student();
+            $studentList = $student->searchStudent($option, $value);
+            include_once("../View/StudentList.php");
+        }
 
 
         else

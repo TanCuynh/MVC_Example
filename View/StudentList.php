@@ -9,8 +9,9 @@
 <body>
     <h2>Danh sách sinh viên:</h2>
     <?php
-    foreach($studentList as $student) {
-        echo"<p><a href='?stid=" .$student ->id ."'>".$student->name ."</a></p>";
+    foreach($studentList as $student) 
+    {
+        echo"<p><a href='?stid=" .$student->id ."'>".$student->name ."</a></p>";
     }
     ?>
     <br>

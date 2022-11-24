@@ -51,5 +51,32 @@ class Model_Student
         $rs = mysqli_query($link,"DELETE FROM sinhvien WHERE id = '".$id."'");
         mysqli_close($link);
     }
+
+    public function searchStudent($option, $value)
+    {
+        $link = mysqli_connect('localhost','root','') or die('Could not connect:'.mysqli_error());
+        mysqli_select_db($link,'DULIEU');
+        if($option == 'id')
+        {
+            $rs = mysqli_query($link,"SELECT * FROM SINHVIEN WHERE ID = '$value'");
+        }
+        else if($option == 'name')
+        {
+            $rs = mysqli_query($link,"SELECT * FROM SINHVIEN WHERE `NAME` LIKE '%$value%'");
+        }
+        else if($option == 'university')
+        {
+            $rs = mysqli_query($link,"SELECT * FROM SINHVIEN WHERE UNIVERSITY LIKE '%$value%'");
+        }
+        while($row = mysqli_fetch_array($rs))
+        {
+            $id = $row['id'];
+            $name = $row['name'];
+            $age = $row['age'];
+            $university = $row['university'];
+            $students[] = new Entity_Student($id, $name, $age, $university);
+        }
+        return $students;
+    }
 }
 ?>
